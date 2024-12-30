@@ -39,6 +39,7 @@ const SignUp = () => {
     setPasswordError(""); // Réinitialiser l'erreur de confirmation
   };
 
+
   // Vérifier si les mots de passe correspondent et que tous les champs sont remplis
   const handleSubmit = (e) => {
     e.preventDefault();
