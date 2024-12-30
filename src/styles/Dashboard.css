@@ -1,0 +1,475 @@
+/* Dashboard.css */
+
+.dashboard-container {
+  padding: 20px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+/* Style pour la barre de recherche */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-left: 450px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  padding-right: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.search-input::placeholder {
+  color: #9ca3af;
+  /* margin-left: 100px; */
+}
+
+
+.no-results {
+  width: 100%;
+  text-align: center;
+  padding: 40px 20px;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 300px;
+}
+
+
+
+
+
+.clear-search-button {
+  position: absolute;
+  right: 12px;
+  top: 41%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.clear-search-button:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
+}
+
+
+
+
+
+
+/* Style pour le bouton Ajouter */
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #2563eb;
+}
+
+/* Style pour la grille */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+  margin-left: 100px;
+  margin-right: 200px;
+}
+
+/* Style pour les cartes dans la grille */
+.grid-item {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+  margin-top: 15px;
+  margin-left: 100px;
+  margin-right: 50px;
+}
+
+.grid-item:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.grid-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.grid-item-content {
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Header contenant la recherche et le bouton */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+/* Animation pour le hover des cartes */
+@keyframes cardHover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+  gap: 46px;
+  margin-right: 20px;
+}
+
+.profile-menu-container {
+  position: relative;
+}
+
+.profile-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.profile-button:hover {
+  transform: scale(1.05);
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.profile-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #374151;
+  font-size: 14px;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.profile-option:hover {
+  background-color: #f3f4f6;
+}
+
+.profile-option svg {
+  color: #6b7280;
+}
+
+/* Styles pour la modale */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligner en haut */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 10%; /* Positionner la modale à 10% du haut de la fenêtre */
+  width: 100%;
+  height: auto; /* Permettre à la hauteur de s'ajuster au contenu */
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7); /* Fond plus sombre pour plus de contraste */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 20px auto; /* Espace autour de la modale */
+  padding: 30px; /* Rembourrage intérieur */
+  border-radius: 12px; /* Coins arrondis */
+  width: 500px; /* Largeur de la modale */
+  max-width: 90%; /* Largeur maximale */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+  animation: fadeIn 0.3s; /* Animation d'apparition */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold; /* Titre en gras */
+  font-size: 24px; /* Taille de police augmentée */
+  margin-bottom: 0px; /* Espace sous le header */
+}
+
+.modal-body {
+  margin-top: 10px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end; /* Aligner les boutons à droite */
+  margin-top: 10px; /* Espace au-dessus du footer */
+}
+
+/* Styles pour les champs de saisie */
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* Largeur complète */
+  padding: 10px; /* Rembourrage */
+  margin-top: 5px; /* Espace au-dessus des champs */
+  margin-bottom: 15px; /* Espace en dessous des champs */
+  border: 1px solid #e5e7eb; /* Bordure */
+  border-radius: 6px; /* Coins arrondis */
+  box-sizing: border-box; /* Inclure la bordure dans la largeur totale */
+  transition: border-color 0.2s; /* Transition pour le focus */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #3b82f6; /* Couleur de la bordure au focus */
+}
+
+/* Styles pour les boutons */
+button {
+  padding: 10px 15px; /* Rembourrage */
+  border: none;
+  border-radius: 6px; /* Coins arrondis */
+  cursor: pointer;
+  transition: background-color 0.2s; /* Transition pour le hover */
+}
+
+/* button:hover {
+  background-color: #3b82f6;
+  color: #000000;
+} */
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #c00; /* Couleur pour le bouton de fermeture */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.credential-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background-color: #f3f4f6;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #6b7280;
+  /* position: absolute; */
+  right: 8px;
+}
+
+.icon-button:hover {
+  color: #374151;
+}
+
+.site-text, .note-text {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.left-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-button:hover {
+  background: #f3f4f6;
+}
+
+.action-button.delete {
+  color: #ef4444;
+}
+
+.action-button.share {
+  color: #6b7280;
+}
+
+
+
+.share-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.share-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.share-button:hover {
+  background-color: #f3f4f6;
+}
